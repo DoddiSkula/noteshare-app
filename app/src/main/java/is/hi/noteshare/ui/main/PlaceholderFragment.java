@@ -12,8 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import is.hi.noteshare.R;
-
 import is.hi.noteshare.databinding.FragmentMainBinding;
 
 /**

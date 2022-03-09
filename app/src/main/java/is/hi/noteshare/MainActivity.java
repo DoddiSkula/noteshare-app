@@ -9,9 +9,8 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+
 
 import is.hi.noteshare.databinding.ActivityMainBinding;
 import is.hi.noteshare.ui.main.SectionsPagerAdapter;
