@@ -2,6 +2,7 @@ package is.hi.noteshare.ui.main;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
@@ -25,11 +26,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         mContext = context;
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int position) {
-        // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+        if (position == 0) return new ProfileFragment();
+        return new CoursesFragment();
     }
 
     @Nullable
@@ -40,7 +41,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // Show 2 total pages.
-        return 2;
+        return TAB_TITLES.length;
     }
 }
