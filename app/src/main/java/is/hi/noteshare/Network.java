@@ -3,7 +3,15 @@ package is.hi.noteshare;
 
 
 public class Network {
-    getCourses();
+    /*
+    getCourses() {
+        // return list of dummy courses
+        return [
+        new Course(a,a,a),
+        new Course(b,b,b)
+        ]
+    };
+
     getCourses(name: String);
     getCourse(id: long);
     getUser(id: long);
@@ -14,5 +22,5 @@ public class Network {
     signup(user: User);
     upload(file: File);
     favourite(userId: long, courseId: long);
-    unFavourite(userId: long, courseId: long);
+    unFavourite(userId: long, courseId: long);*/
 }
