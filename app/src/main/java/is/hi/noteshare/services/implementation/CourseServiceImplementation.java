@@ -1,10 +1,10 @@
-package is.hi.noteshare.service.implementation;
+package is.hi.noteshare.services.implementation;
 
 import java.util.List;
 
-import is.hi.noteshare.entities.Course;
-import is.hi.noteshare.entities.File;
-import is.hi.noteshare.service.CourseService;
+import is.hi.noteshare.data.models.Course;
+import is.hi.noteshare.data.models.File;
+import is.hi.noteshare.services.CourseService;
 
 public class CourseServiceImplementation implements CourseService {
 

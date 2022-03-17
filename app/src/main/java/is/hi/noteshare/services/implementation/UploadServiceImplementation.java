@@ -1,6 +1,6 @@
-package is.hi.noteshare.service.implementation;
+package is.hi.noteshare.services.implementation;
 
-import is.hi.noteshare.service.UploadService;
+import is.hi.noteshare.services.UploadService;
 
 public class UploadServiceImplementation implements UploadService {
     @Override

@@ -1,8 +1,8 @@
-package is.hi.noteshare.service;
+package is.hi.noteshare.services;
 
 import java.util.List;
 
-import is.hi.noteshare.entities.User;
+import is.hi.noteshare.data.models.User;
 
 public interface UserService {
     void login(User user);

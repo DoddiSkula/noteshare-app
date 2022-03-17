@@ -1,9 +1,9 @@
-package is.hi.noteshare.service.implementation;
+package is.hi.noteshare.services.implementation;
 
 import java.util.List;
 
-import is.hi.noteshare.entities.Course;
-import is.hi.noteshare.service.CoursesService;
+import is.hi.noteshare.data.models.Course;
+import is.hi.noteshare.services.CoursesService;
 
 public class CoursesServiceImplementation implements CoursesService {
     @Override

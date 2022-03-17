@@ -1,9 +1,9 @@
-package is.hi.noteshare.service.implementation;
+package is.hi.noteshare.services.implementation;
 
 import java.util.List;
 
-import is.hi.noteshare.entities.User;
-import is.hi.noteshare.service.UserService;
+import is.hi.noteshare.data.models.User;
+import is.hi.noteshare.services.UserService;
 
 public class UserServiceImplementation implements UserService {
     @Override

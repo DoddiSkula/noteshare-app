@@ -1,9 +1,9 @@
-package is.hi.noteshare.service;
+package is.hi.noteshare.services;
 
 import java.util.List;
 
-import is.hi.noteshare.entities.Course;
-import is.hi.noteshare.entities.File;
+import is.hi.noteshare.data.models.Course;
+import is.hi.noteshare.data.models.File;
 
 public interface CourseService {
     Course getCourse(long id);
