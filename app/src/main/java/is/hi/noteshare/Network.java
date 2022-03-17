@@ -6,7 +6,7 @@ public class Network {
     /*
     getCourses() {
         // return list of dummy courses
-        return [
+        return List<>
         new Course(a,a,a),
         new Course(b,b,b)
         ]
