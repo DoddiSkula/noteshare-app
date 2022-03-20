@@ -6,6 +6,13 @@ public class Course {
     private String longName;
     private String schoolName;
 
+    public Course(int courseId, String courseShortName, String courseLongName, String courseSchoolName) {
+        id = courseId;
+        shortName = courseShortName;
+        longName = courseLongName;
+        shortName = courseSchoolName;
+    }
+
     public int getId() {
         return id;
     }

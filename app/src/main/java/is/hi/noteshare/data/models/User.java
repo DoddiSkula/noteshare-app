@@ -6,6 +6,13 @@ public class User {
     private String email;
     private String password;
 
+    public User(int userId, String userName, String userEmail, String userPassword) {
+        id = userId;
+        name = userName;
+        email = userEmail;
+        password = userPassword;
+    }
+
     public int getId() {
         return id;
     }
