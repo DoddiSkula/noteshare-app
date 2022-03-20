@@ -1,7 +1,5 @@
 package is.hi.noteshare;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,7 +49,16 @@ public class Network {
         return courses;
     };
 
-    public JSONObject getUser() throws JSONException {
+    public static JSONObject getCourse(Float id) throws JSONException {
+        JSONObject course = new JSONObject();
+        course.put("id", 3);
+        course.put("shortName", "HBV601G");
+        course.put("longName", "Hugbúnaðarverkefni 2");
+        course.put("schoolName", "HÍ");
+        return course;
+    }
+
+    public static JSONObject getUser() throws JSONException {
         JSONObject user = new JSONObject();
         user.put("id", 1);
         user.put("name", "Matthias Book");
