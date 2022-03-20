@@ -4,9 +4,16 @@
     <string name="tab_text_2">Courses</string>
     <string name="search_for_a_course">Search for a course</string>
     <string name="profile_picture">Profile picture</string>
+    <string name="loginTitle">Welcome back!</string>
+    <string name="passwordHint">Password</string>
+    <string name="emailHint">Email</string>
+    <string name="loginButton">Login</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="signupTitle">Get started with NoteShare!</string>
+    <string name="nameHint">Name</string>
+    <string name="signupButton">Sign up</string>
     <string name="search_for_a_file">Search for a file</string>
     <string name="courseName">Course Name</string>
     <string name="upLoadPageStringName">Upload</string>
     <string name="upLoadFileDescription">File Description</string>
-
 </resources>
