@@ -31,16 +31,6 @@ public class CoursesFragment extends Fragment {
         binding = FragmentCoursesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-
-        FloatingActionButton fab = binding.fab;
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Welcome to NoteShare", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         return root;
     }
 

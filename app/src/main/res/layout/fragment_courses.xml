@@ -1,50 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/light_grey">
 
     <EditText
-        android:id="@+id/search"
+        android:id="@+id/searchBar"
+        style="@style/Widget.AppCompat.EditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="12dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:padding="18dp"
-        android:text="Search Course" />
+        android:hint="@string/search_for_a_course"
+        android:inputType="text"
+        android:autofillHints="course" />
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        tools:context=".ui.main.ProfileFragment">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:text="@string/large_text"
-            android:textColor="@color/black" />
-
-    </androidx.core.widget.NestedScrollView>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
-        android:background="@color/blue"
-        android:backgroundTint="@color/blue"
-        android:tint="@color/white"
-        app:backgroundTint="@color/blue"
-        app:srcCompat="@android:drawable/ic_input_add"
-        tools:layout_weight="0" />
-
+        android:layout_height="match_parent" />
 </LinearLayout>
 
 
