@@ -49,7 +49,7 @@ public class Network {
         return courses;
     };
 
-    public static JSONObject getCourse(Float id) throws JSONException {
+    public static JSONObject getCourse(long id) throws JSONException {
         JSONObject course = new JSONObject();
         course.put("id", 3);
         course.put("shortName", "HBV601G");
