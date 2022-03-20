@@ -6,4 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".ui.upload.UploadActivity">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/uploadPageName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="24sp"
+            android:text="@string/upLoadPageStringName" />
+
+        <EditText
+            android:id="@+id/uploadFileName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="File Name" />
+
+        <EditText
+            android:id="@+id/uploadFileDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="@string/upLoadFileDescription" />
+
+        <Button
+            android:id="@+id/uploadButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upload" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
