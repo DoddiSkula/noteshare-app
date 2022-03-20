@@ -1,10 +1,8 @@
 package is.hi.noteshare;
 
 
-import is.hi.noteshare.service.CourseService;
+public class Network {
 
-public class Network implements CourseService {
-/*
     getCourses() {
         // return list of dummy courses
         return List<
@@ -25,7 +23,8 @@ public class Network implements CourseService {
         return List< new User(1, admin, admin@admin.com, 123)
         >
     };
-
+    
+    /*
     getCourses(name: String);
     getCourse(id: long);
     getUser(id: long);

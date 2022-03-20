@@ -1,4 +1,4 @@
-package is.hi.noteshare;
+package is.hi.noteshare.ui.main;
 
 import android.os.Bundle;
 
