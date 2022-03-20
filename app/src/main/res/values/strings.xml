@@ -4,4 +4,7 @@
     <string name="tab_text_2">Courses</string>
     <string name="search_for_a_course">Search for a course</string>
     <string name="profile_picture">Profile picture</string>
+    <string name="search_for_a_file">Search for a file</string>
+    <string name="courseName">Course Name</string>
+
 </resources>
