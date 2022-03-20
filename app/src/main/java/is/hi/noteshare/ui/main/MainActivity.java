@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 
 
+import org.json.JSONException;
+
+import is.hi.noteshare.Network;
 import is.hi.noteshare.databinding.ActivityMainBinding;
 import is.hi.noteshare.ui.main.SectionsPagerAdapter;
 
@@ -32,6 +35,12 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
+
+        try {
+            Network.getCourses();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 }

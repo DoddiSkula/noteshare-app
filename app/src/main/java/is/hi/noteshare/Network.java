@@ -1,34 +1,63 @@
 package is.hi.noteshare;
 
+import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import is.hi.noteshare.data.models.Course;
-import is.hi.noteshare.data.models.User;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Network {
 
-    public List<Course> getCourses() {
-        // return list of dummy courses
-        List<Course> mockCourses = new ArrayList<>();
+    public static JSONArray getCourses() throws JSONException {
+        JSONArray courses = new JSONArray();
+        JSONObject course = new JSONObject();
 
-        mockCourses.add(new Course(1 ,"HBV401G", "Þróun hugbúnaðar", "HÍ"));
-        mockCourses.add(new Course(2, "HBV501G", "Hugbúnaðarverkefni 1", "HÍ"));
-        mockCourses.add(new Course(3, "HBV601G", "Hugbúnaðarverkefni 2", "HÍ"));
-        mockCourses.add(new Course(4, "TÖL101G", "Tölvunarfræði 1", "HÍ"));
-        mockCourses.add(new Course(5, "TÖL107G", "Vefforritun 1", "HÍ"));
-        mockCourses.add(new Course(6, "HBV201G", "Viðmótsforritun", "HÍ"));
-        mockCourses.add(new Course(7, "TÖL104G", "Stærðfræðimynstur", "HÍ"));
-        mockCourses.add(new Course(8, "TÖL203G", "Tölvunarfræði 2", "HÍ"));
-        mockCourses.add(new Course(9, "TÖL401G", "Stýrikerfi", "HÍ"));
-        mockCourses.add(new Course(10, "TÖL304G", "Forritunarmál", "HÍ"));
+        course.put("id", 1);
+        course.put("shortName", "HBV401G");
+        course.put("longName", "Þróun hugbúnaðar");
+        course.put("schoolName", "HÍ");
+        courses.put(course);
 
-        return mockCourses;
+        course.put("id", 2);
+        course.put("shortName", "HBV501G");
+        course.put("longName", "Hugbúnaðarverkefni 1");
+        course.put("schoolName", "HÍ");
+        courses.put(course);
+
+        course.put("id", 3);
+        course.put("shortName", "HBV601G");
+        course.put("longName", "Hugbúnaðarverkefni 2");
+        course.put("schoolName", "HÍ");
+        courses.put(course);
+
+        course.put("id", 4);
+        course.put("shortName", "TÖL101G");
+        course.put("longName", "Tölvunarfræði 1");
+        course.put("schoolName", "HÍ");
+        courses.put(course);
+
+        course.put("id", 5);
+        course.put("shortName", "TÖL107G");
+        course.put("longName", "Vefforritun 1");
+        course.put("schoolName", "HÍ");
+        courses.put(course);
+
+        course.put("id", 6);
+        course.put("shortName", "HBV201G");
+        course.put("longName", "Viðmótsforritun");
+        course.put("schoolName", "HÍ");
+        courses.put(course);
+
+        return courses;
     };
 
-    public User getUser() {
-        return new User(1, "admin", "admin@admin.com", "123");
+    public JSONObject getUser() throws JSONException {
+        JSONObject user = new JSONObject();
+        user.put("id", 1);
+        user.put("name", "Matthias Book");
+        user.put("email", "admin@admin.com");
+        user.put("password", "123");
+        return user;
     };
     
     /*
