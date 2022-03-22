@@ -41,16 +41,4 @@ public class DataServiceImplementation implements DataService {
         Course course = new Course(id, shortName, longName, schoolName);
         return course;
     }
-    @Override
-    public JSONObject CourseToJson(Course course){
-
-    }
-    @Override
-    public JSONObject FileToJson(File file){
-
-    }
-    @Override
-    public JSONObject UserToJson(User user){
-
-    }
 }
