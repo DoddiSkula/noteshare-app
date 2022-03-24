@@ -1,12 +1,16 @@
-package is.hi.noteshare;
+package is.hi.noteshare.services.implementation;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Network {
+import is.hi.noteshare.services.Network;
 
-    public static JSONArray getCourses() throws JSONException {
+public class NetworkImplementation implements Network {
+
+    public NetworkImplementation() {}
+
+    public JSONArray getCourses() throws JSONException {
         JSONArray courses = new JSONArray();
         JSONObject course = new JSONObject();
 
@@ -49,7 +53,7 @@ public class Network {
         return courses;
     };
 
-    public static JSONObject getCourse(long id) throws JSONException {
+    public JSONObject getCourse(long id) throws JSONException {
         JSONObject course = new JSONObject();
         course.put("id", 3);
         course.put("shortName", "HBV601G");
@@ -58,7 +62,7 @@ public class Network {
         return course;
     }
 
-    public static JSONObject getUser() throws JSONException {
+    public JSONObject getUser() throws JSONException {
         JSONObject user = new JSONObject();
         user.put("id", 1);
         user.put("name", "Matthias Book");

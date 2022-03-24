@@ -13,6 +13,8 @@ public class User {
         password = userPassword;
     }
 
+    public User() {}
+
     public int getId() {
         return id;
     }

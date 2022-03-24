@@ -18,7 +18,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="5dp"
         android:contentDescription="@string/profile_picture"
-        android:src="@drawable/turbo"
+        android:src="@drawable/matthias"
         tools:ignore="ImageContrastCheck"
         app:civ_border_width="2dp"
         app:civ_border_color="@color/grey"/>
@@ -27,16 +27,16 @@
         android:id="@+id/profileName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tóti Túrbó"
+        android:text=""
         android:textAlignment="center"
         android:textSize="18dp"
         android:textColor="@color/black"/>
 
     <TextView
-        android:id="@+id/profileSchool"
+        android:id="@+id/profileEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="University of Iceland"
+        android:text=""
         android:textAlignment="center"
         android:textSize="14dp"/>
 
