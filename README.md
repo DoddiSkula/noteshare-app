@@ -1,5 +1,5 @@
 # NoteShare app
 
-Linkur á Design model: https://drive.google.com/file/d/1RIiUCSj9UH7BOEffdccNdc82NN4R2c-P/view?usp=sharing
+[Linkur](https://drive.google.com/file/d/1RIiUCSj9UH7BOEffdccNdc82NN4R2c-P/view?usp=sharing "Class Diagram skjal á Google Drive sem unnið er á Diagrams.net") á hrátt Design model sem hægt er að opna á diagrams.net.
 
-Einnig má finna .png í rót á repo-inu.
+Einnig fylgir með [.png](./Class-Diagram.png "Class Diagram á .png formi") útgáfa.
