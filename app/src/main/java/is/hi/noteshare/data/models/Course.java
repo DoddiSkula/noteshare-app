@@ -10,7 +10,7 @@ public class Course {
         id = courseId;
         shortName = courseShortName;
         longName = courseLongName;
-        shortName = courseSchoolName;
+        schoolName = courseSchoolName;
     }
 
     public int getId() {
