@@ -16,4 +16,5 @@
     <string name="courseName">Course Name</string>
     <string name="upLoadPageStringName">Upload</string>
     <string name="upLoadFileDescription">File Description</string>
+    <string name="testButton">Test</string>
 </resources>
