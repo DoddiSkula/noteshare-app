@@ -1,9 +1,11 @@
 package is.hi.noteshare.ui.main;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import is.hi.noteshare.services.implementation.CoursesServiceImplementation;
 
 import androidx.fragment.app.Fragment;
 import androidx.annotation.NonNull;
@@ -28,8 +30,10 @@ public class CoursesFragment extends Fragment {
         binding = FragmentCoursesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+
         return root;
     }
+
 
     @Override
     public void onDestroyView() {
