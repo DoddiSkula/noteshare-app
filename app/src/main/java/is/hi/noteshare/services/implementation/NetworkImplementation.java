@@ -6,6 +6,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
+
 import is.hi.noteshare.services.Network;
 
 public class NetworkImplementation implements Network {
@@ -77,13 +79,34 @@ public class NetworkImplementation implements Network {
         user.put("password", "123");
         return user;
     };
+
+    public JSONArray getFilesByCourse(long id) throws JSONException {
+        JSONArray files = new JSONArray();
+
+        JSONObject file1 = new JSONObject();
+        file1.put("id", 1);
+        file1.put("date", new Date());
+        file1.put("title", "Rosa flott upplýsingar");
+        file1.put("description", "Nú á DVD!");
+        file1.put("type", ".pdf");
+        files.put(file1);
+        return files;
+    };
+
+    public JSONObject getFile(long id) throws JSONException {
+        JSONObject file = new JSONObject();
+        file.put("id", 1);
+        file.put("date", new Date());
+        file.put("title", "Rosa flott upplýsingar");
+        file.put("description", "Nú á DVD!");
+        file.put("type", ".pdf");
+        return file;
+    };
     
     /*
     getCourses(name: String);
     getCourse(id: long);
     getUser(id: long);
-    getFilesByCourse(id: long);
-    getFile(id: long);
     login(user: User);
     logout(user: User);
     signup(user: User);
