@@ -18,8 +18,6 @@
         android:inputType="text"
         android:autofillHints="course" />
 
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/coursesList"
         android:layout_width="match_parent"

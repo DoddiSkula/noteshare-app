@@ -30,7 +30,7 @@ public class CoursesServiceImplementation implements CoursesService {
         JSONArray newJsonArr = new JSONArray();
         ArrayList<Course> newJavaArr = new ArrayList<Course>();
 
-        try{
+        try {
             newJsonArr = mNetwork.getCourses();
             for(int i = 0; i < newJsonArr.length(); i++){
                 newJavaArr.add(mDataService.JsonToCourse((JSONObject) newJsonArr.get(i)));
@@ -38,9 +38,8 @@ public class CoursesServiceImplementation implements CoursesService {
         } catch (JSONException e){
             e.printStackTrace();
         }
-        Log.v("tjekk", String.valueOf(newJavaArr));
-        return newJavaArr;
 
+        return newJavaArr;
     }
 
     @Override

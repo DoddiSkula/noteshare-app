@@ -45,9 +45,9 @@ public class DataServiceImplementation implements DataService {
     @Override
     public Course JsonToCourse(JSONObject json) throws JSONException{
         int id = json.getInt("id");
-        String shortName = json.getString("shortname");
-        String longName = json.getString("longname");
-        String schoolName = json.getString("schoolname");
+        String shortName = json.getString("shortName");
+        String longName = json.getString("longName");
+        String schoolName = json.getString("schoolName");
         return new Course(id, shortName, longName, schoolName);
     }
 }
