@@ -15,6 +15,7 @@ import is.hi.noteshare.services.DataService;
 import is.hi.noteshare.services.Network;
 
 
+
 public class CoursesServiceImplementation implements CoursesService {
 
     private final Network mNetwork;
@@ -43,7 +44,16 @@ public class CoursesServiceImplementation implements CoursesService {
     }
 
     @Override
-    public List<Course> getCourses(String name) {
-        return null;
+    public List<Course> getCourses(ArrayList<Course> courses, String name) {
+
+        ArrayList<Course> searchList = new ArrayList<Course>();
+
+        for(Course element : courses){
+            if(element.getLongName().contains(name) || element.getSchoolName().contains(name) || element.getShortName().contains(name)){
+                searchList.add(element);
+            }
+        }
+        
+        return searchList;
     }
 }
