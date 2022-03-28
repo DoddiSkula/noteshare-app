@@ -10,42 +10,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import org.json.JSONException;
-
 import is.hi.noteshare.R;
 import is.hi.noteshare.data.models.User;
-import is.hi.noteshare.services.CoursesService;
 import is.hi.noteshare.services.UserService;
-import is.hi.noteshare.services.implementation.CoursesServiceImplementation;
 import is.hi.noteshare.services.implementation.UserServiceImplementation;
 import is.hi.noteshare.ui.main.MainActivity;
 
 public class LoginActivity extends AppCompatActivity {
+    private UserService mUserService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        UserService userService = new UserServiceImplementation();
-        CoursesService coursesService = new CoursesServiceImplementation();
+        mUserService = new UserServiceImplementation();
 
         EditText emailInput = (EditText) findViewById(R.id.editEmail);
         EditText passwordInput = (EditText) findViewById(R.id.editPassword);
         Button loginButton = (Button) findViewById(R.id.buttonLogin);
-
-        try {
-            coursesService.getCourses();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String email = emailInput.getText().toString();
                 String password = passwordInput.getText().toString();
-                User user = userService.login(email, password);
+                User user = mUserService.login(email, password);
 
                 if (user != null) {
                     SharedPreferences sharedPref = LoginActivity.this.getSharedPreferences("NoteShare", Context.MODE_PRIVATE);
