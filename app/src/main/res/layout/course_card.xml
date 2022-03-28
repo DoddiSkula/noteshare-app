@@ -1,46 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="125dp"
+        android:layout_height="100dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp"
-        app:cardElevation="10dp"
-        app:cardMaxElevation="12dp"
         app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="true">
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="20dp"
             android:layout_gravity="start|center"
-            >
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/courseShortName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:text="HBV303G" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/courseLongName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hugbúnaðarverkefni 1"
-                android:textSize="18sp"
                 android:textColor="@color/black"
-                android:textStyle="bold"/>
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/courseSchoolName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
@@ -49,14 +50,15 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/imageButton2"
-            android:background="@null"
+            android:id="@+id/favButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/btn_star_big_off"
             android:layout_gravity="right|center"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="10dp"
+            android:background="@null"
+            app:srcCompat="@android:drawable/btn_star_big_off"
+            android:contentDescription="favourite button" />
 
     </androidx.cardview.widget.CardView>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
