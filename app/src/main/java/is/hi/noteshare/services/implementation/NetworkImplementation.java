@@ -59,6 +59,13 @@ public class NetworkImplementation implements Network {
         course6.put("schoolName", "Háskóli Íslands");
         courses.put(course6);
 
+        JSONObject course7 = new JSONObject();
+        course7.put("id", 7);
+        course7.put("shortName", "TÖL607G");
+        course7.put("longName", "Keppnisforritun");
+        course7.put("schoolName", "Háskóli Íslands");
+        courses.put(course7);
+
         return courses;
     };
 
