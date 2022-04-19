@@ -1,6 +1,8 @@
 package is.hi.noteshare.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,8 +24,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import is.hi.noteshare.databinding.FragmentCoursesBinding;
+import is.hi.noteshare.ui.course.CourseActivity;
+import is.hi.noteshare.ui.login.LoginActivity;
 
-public class CoursesFragment extends Fragment {
+public class CoursesFragment extends Fragment implements CourseAdapter.onCourseListener {
 
     private FragmentCoursesBinding binding;
     private List<Course> mCourses;
@@ -43,6 +47,7 @@ public class CoursesFragment extends Fragment {
 
         CoursesService coursesService = new CoursesServiceImplementation();
 
+
         RecyclerView recyclerView = binding.courseList;
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
@@ -52,16 +57,23 @@ public class CoursesFragment extends Fragment {
             e.printStackTrace();
         }
 
-        CourseAdapter adapter = new CourseAdapter(this.getActivity(), mCourses);
+
+        CourseAdapter adapter = new CourseAdapter(this.getActivity(), mCourses, this);
         recyclerView.setAdapter(adapter);
 
         return root;
     }
 
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onCourseClick(int position) {
+        Intent intent = new Intent(this.getActivity(), CourseActivity.class);
+        intent.putExtra("Course", mCourses.get(position).getLongName());
+        startActivity(intent);
     }
 }

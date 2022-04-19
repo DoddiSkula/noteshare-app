@@ -18,17 +18,19 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseHold
 
     private final List<Course> mCourses;
     private final Context mContext;
+    private final onCourseListener mOnCourseListener;
 
-    public CourseAdapter(Context context, List<Course> courses) {
+    public CourseAdapter(Context context, List<Course> courses, onCourseListener onCourseListener) {
         mContext = context;
         mCourses = courses;
+        mOnCourseListener = onCourseListener;
     }
 
     @NonNull
     @Override
     public CourseHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.course_card, parent, false);
-        return new CourseHolder(view);
+        return new CourseHolder(view, mOnCourseListener);
     }
 
     @Override
@@ -42,17 +44,20 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseHold
         return mCourses.size();
     }
 
-    public static class CourseHolder extends RecyclerView.ViewHolder {
+    public static class CourseHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private final TextView shortName;
         private final TextView longName;
         private final TextView schoolName;
+        onCourseListener mOnCourseListener;
 
-        public CourseHolder(@NonNull View itemView) {
+        public CourseHolder(@NonNull View itemView, onCourseListener onCourseListener) {
             super(itemView);
             shortName = itemView.findViewById(R.id.courseShortName);
-            longName =  itemView.findViewById(R.id.courseLongName);
-            schoolName =  itemView.findViewById(R.id.courseSchoolName);
+            longName = itemView.findViewById(R.id.courseLongName);
+            schoolName = itemView.findViewById(R.id.courseSchoolName);
+            this.mOnCourseListener = onCourseListener;
+            itemView.setOnClickListener(this);
         }
 
         void setDetails(Course course) {
@@ -60,5 +65,14 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseHold
             longName.setText(course.getLongName());
             schoolName.setText(course.getSchoolName());
         }
+
+        @Override
+        public void onClick(View view) {
+            mOnCourseListener.onCourseClick(getAdapterPosition());
+        }
+    }
+
+    public interface onCourseListener {
+        void onCourseClick(int position);
     }
 }

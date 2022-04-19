@@ -109,7 +109,9 @@ public class NetworkImplementation implements Network {
         file.put("type", ".pdf");
         return file;
     };
-    
+
+
+
     /*
     getCourses(name: String);
     getCourse(id: long);
