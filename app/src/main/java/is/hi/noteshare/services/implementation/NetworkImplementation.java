@@ -1,21 +1,156 @@
 package is.hi.noteshare.services.implementation;
 
-import android.util.Log;
+import android.content.Context;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Date;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import is.hi.noteshare.services.Network;
+import is.hi.noteshare.services.NetworkCallback;
+
 
 public class NetworkImplementation implements Network {
 
-    public NetworkImplementation() {}
+        private static final String BASE_URL = "https://noteshare-server.herokuapp.com";
+        private final String TAG ="NetworkManager";
+        private static NetworkImplementation mInstance;
+        private static RequestQueue mQueue;
+        private Context mContext;
 
+    public NetworkImplementation() {
+
+    }
+
+
+    public static synchronized NetworkImplementation getInstance(Context context){
+            if(mInstance == null) {
+                mInstance = new NetworkImplementation(context);
+            }
+            return mInstance;
+        }
+
+        NetworkImplementation(Context context) {
+            mContext = context;
+            mQueue = getRequestQueue();
+        }
+
+        public RequestQueue getRequestQueue() {
+            if(mQueue == null) {
+                mQueue = Volley.newRequestQueue(mContext.getApplicationContext());
+            }
+            return mQueue;
+        }
+        public byte[] getUrlBytes(String urlSpec) throws IOException {
+            URL url = new URL(urlSpec);
+            HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+            try {
+                ByteArrayOutputStream out = new ByteArrayOutputStream();
+                InputStream in = conn.getInputStream();
+                if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                    throw new IOException(conn.getResponseMessage() + ": with " + urlSpec);
+                }
+                int bytesRead = 0;
+                byte[] buffer = new byte[1024];
+                while ((bytesRead = in.read(buffer)) > 0) {
+                    out.write(buffer, 0, bytesRead);
+                }
+                out.close();
+                return out.toByteArray();
+            } finally { conn.disconnect(); }
+        }
+        public String getUrlString(String urlSpec) throws IOException {
+            return new String(getUrlBytes(urlSpec));
+        }
+
+        /**
+         * Post request to the backend
+         * @param url
+         * @param requestBody
+         * @param callback
+         */
+        public void post(String url, JSONObject requestBody, NetworkCallback<String> callback ){
+            JsonObjectRequest request = new JsonObjectRequest(
+                    Request.Method.POST, BASE_URL + url, requestBody, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    callback.onSuccess(response.toString());
+                }
+
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    callback.onFailure(error.toString());
+                }
+            });
+
+            mQueue.add(request);
+        }
+        /**
+         * Get request to the backend
+         * @param url
+         * @param callback
+         */
+        public void get(String url, NetworkCallback<String> callback){
+            StringRequest request = new StringRequest(
+                    Request.Method.GET, BASE_URL + url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    callback.onSuccess(response);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    callback.onFailure(error.toString());
+                }
+            }
+            );
+            mQueue.add(request);
+        }
+
+    @Override
     public JSONArray getCourses() throws JSONException {
-        JSONArray courses = new JSONArray();
+        return null;
+    }
+
+    @Override
+    public JSONObject getCourse(long id) throws JSONException {
+        return null;
+    }
+
+    @Override
+    public JSONObject getUser() throws JSONException {
+        return null;
+    }
+
+    @Override
+    public JSONArray getFilesByCourse(long id) throws JSONException {
+        return null;
+    }
+
+    @Override
+    public JSONObject getFile(long id) throws JSONException {
+        return null;
+    }
+}
+       /* JSONArray courses = new JSONArray();
 
         JSONObject course1 = new JSONObject();
         course1.put("id", 1);
@@ -120,4 +255,4 @@ public class NetworkImplementation implements Network {
     upload(file: File);
     favourite(userId: long, courseId: long);
     unFavourite(userId: long, courseId: long);*/
-}
+
