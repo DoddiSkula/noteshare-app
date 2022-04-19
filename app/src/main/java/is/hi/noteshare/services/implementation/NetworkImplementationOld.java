@@ -10,9 +10,9 @@ import java.util.Date;
 
 import is.hi.noteshare.services.Network;
 
-public class NetworkImplementation implements Network {
+public class NetworkImplementationOld implements Network {
 
-    public NetworkImplementation() {}
+    public NetworkImplementationOld() {}
 
     public JSONArray getCourses() throws JSONException {
         JSONArray courses = new JSONArray();
@@ -109,7 +109,7 @@ public class NetworkImplementation implements Network {
         file.put("type", ".pdf");
         return file;
     };
-    
+
     /*
     getCourses(name: String);
     getCourse(id: long);
