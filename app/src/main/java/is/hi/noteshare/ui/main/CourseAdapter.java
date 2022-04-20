@@ -63,7 +63,6 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseHold
         void setDetails(Course course) {
             shortName.setText(course.getShortName());
             longName.setText(course.getLongName());
-            schoolName.setText(course.getSchoolName());
         }
 
         @Override

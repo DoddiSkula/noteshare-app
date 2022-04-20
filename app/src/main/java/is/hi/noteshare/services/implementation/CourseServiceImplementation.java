@@ -19,7 +19,7 @@ public class CourseServiceImplementation implements CourseService {
     private final DataService mDataService;
 
     public CourseServiceImplementation() {
-        this.mNetwork = new NetworkImplementation();
+        this.mNetwork = new NetworkImplementationOld();
         this.mDataService = new DataServiceImplementation();
     }
 

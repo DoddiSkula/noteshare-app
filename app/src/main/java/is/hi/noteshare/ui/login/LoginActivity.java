@@ -6,13 +6,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.List;
+
 import is.hi.noteshare.R;
+import is.hi.noteshare.data.models.Course;
 import is.hi.noteshare.data.models.User;
 import is.hi.noteshare.services.UserService;
+import is.hi.noteshare.services.implementation.NetworkImplementation.NetworkCallback;
+import is.hi.noteshare.services.implementation.NetworkImplementation.NetworkManager;
 import is.hi.noteshare.services.implementation.UserServiceImplementation;
 import is.hi.noteshare.ui.main.MainActivity;
 import is.hi.noteshare.ui.signup.SignupActivity;
@@ -60,7 +66,18 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        NetworkManager networkManager = NetworkManager.getInstance(this);
+        networkManager.getCourses(new NetworkCallback<List<Course>>() {
+            @Override
+            public void onSuccess(List<Course> result) {
+                Log.d("First course: ",result.toString());
+            }
 
+            @Override
+            public void onFailure(String errorString) {
+
+            }
+        });
     }
 
 }

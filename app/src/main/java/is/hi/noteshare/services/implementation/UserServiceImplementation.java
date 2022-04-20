@@ -15,7 +15,7 @@ public class UserServiceImplementation implements UserService {
     private final DataService mDataService;
 
     public UserServiceImplementation() {
-        this.mNetwork = new NetworkImplementation();
+        this.mNetwork = new NetworkImplementationOld();
         this.mDataService = new DataServiceImplementation();
     }
 
