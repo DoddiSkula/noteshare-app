@@ -10,11 +10,14 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import is.hi.noteshare.R;
-import is.hi.noteshare.ui.login.LoginActivity;
-import is.hi.noteshare.ui.main.MainActivity;
 import is.hi.noteshare.ui.upload.UploadActivity;
+import is.hi.noteshare.services.CourseService;
+import is.hi.noteshare.services.implementation.CourseServiceImplementation;
 
 public class CourseActivity extends AppCompatActivity {
+
+    private CourseService mCourseService;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,5 +32,14 @@ public class CourseActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Intent intent = getIntent();
+        mCourseService = new CourseServiceImplementation();
+
+        TextView coursetitle = (TextView) findViewById(R.id.courseTitle);
+
+        String coursename = intent.getStringExtra("Course");
+        coursetitle.setText(coursename);
+
     }
 }
