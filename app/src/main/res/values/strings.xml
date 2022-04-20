@@ -15,7 +15,7 @@
     <string name="search_for_a_file">Search for a file</string>
     <string name="courseName">Course Name</string>
     <string name="files">Files</string>
-    <string name="upLoadPageStringName">Upload</string>
+    <string name="upLoadPageStringName">Upload Notes</string>
     <string name="upLoadFileDescription">File Description</string>
     <string name="testButton">Test</string>
 </resources>
