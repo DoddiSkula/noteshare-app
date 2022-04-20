@@ -1,16 +1,19 @@
 package is.hi.noteshare.data.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Course {
+    @SerializedName("id")
     private int id;
+    @SerializedName("shortName")
     private String shortName;
+    @SerializedName("longName")
     private String longName;
-    private String schoolName;
 
     public Course(int courseId, String courseShortName, String courseLongName, String courseSchoolName) {
         id = courseId;
         shortName = courseShortName;
         longName = courseLongName;
-        schoolName = courseSchoolName;
     }
 
     public int getId() {
@@ -34,10 +37,4 @@ public class Course {
         this.longName = longName;
     }
 
-    public String getSchoolName() {
-        return schoolName;
-    }
-    public void setSchoolName(String schoolName) {
-        this.schoolName = schoolName;
-    }
 }

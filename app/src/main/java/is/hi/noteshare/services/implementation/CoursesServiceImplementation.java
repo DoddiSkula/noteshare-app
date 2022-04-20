@@ -1,7 +1,5 @@
 package is.hi.noteshare.services.implementation;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,7 +20,7 @@ public class CoursesServiceImplementation implements CoursesService {
     private final DataService mDataService;
 
     public CoursesServiceImplementation() {
-        this.mNetwork = new NetworkImplementation();
+        this.mNetwork = new NetworkImplementationOld();
         this.mDataService = new DataServiceImplementation();
     }
     @Override
@@ -49,7 +47,7 @@ public class CoursesServiceImplementation implements CoursesService {
         ArrayList<Course> searchList = new ArrayList<Course>();
 
         for(Course element : courses){
-            if(element.getLongName().contains(name) || element.getSchoolName().contains(name) || element.getShortName().contains(name)){
+            if(element.getLongName().contains(name) || element.getShortName().contains(name)){
                 searchList.add(element);
             }
         }
