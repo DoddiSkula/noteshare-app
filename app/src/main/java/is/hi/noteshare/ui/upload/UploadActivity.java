@@ -6,15 +6,25 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentUris;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 
 import is.hi.noteshare.R;
 
@@ -27,25 +37,21 @@ public class UploadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
-        // Initialize result launcher
         resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult result) {
-                        // Initialize result data
                         Intent data = result.getData();
-                        // check condition
                         if (data != null) {
-                            // Get PDf uri
                             Uri sUri = data.getData();
-                            // Get PDF path
-                            String sPath = sUri.getPath();
+                            String path = getPDFPath(sUri);
 
-                            Log.e("data", String.valueOf(data));
-                            Log.e("sUri", String.valueOf(sUri.getLastPathSegment()));
-                            Log.e("sPath", String.valueOf(sPath));
-                            File file = new File(sUri.getPath());
-                            Log.e("file name", file.getName());
+                            Path pdfFilePath = null;
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                pdfFilePath = Paths.get(path);
+                            }
+
+
                         }
                     }
                 });
@@ -69,5 +75,14 @@ public class UploadActivity extends AppCompatActivity {
         });
     }
 
-
+    public String getPDFPath(Uri uri){
+        final String id = DocumentsContract.getDocumentId(uri);
+        final Uri contentUri = ContentUris.withAppendedId(
+                Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = getContentResolver().query(contentUri, projection, null, null, null);
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
+    }
 }

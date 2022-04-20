@@ -16,9 +16,6 @@ import is.hi.noteshare.services.implementation.CourseServiceImplementation;
 
 public class CourseActivity extends AppCompatActivity {
 
-    private CourseService mCourseService;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +31,7 @@ public class CourseActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        mCourseService = new CourseServiceImplementation();
+        CourseService courseService = new CourseServiceImplementation();
 
         TextView coursetitle = (TextView) findViewById(R.id.courseTitle);
 

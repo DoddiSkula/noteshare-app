@@ -15,6 +15,7 @@ import is.hi.noteshare.data.models.User;
 import is.hi.noteshare.services.UserService;
 import is.hi.noteshare.services.implementation.UserServiceImplementation;
 import is.hi.noteshare.ui.main.MainActivity;
+import is.hi.noteshare.ui.signup.SignupActivity;
 
 public class LoginActivity extends AppCompatActivity {
     private UserService mUserService;
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         EditText emailInput = (EditText) findViewById(R.id.editEmail);
         EditText passwordInput = (EditText) findViewById(R.id.editPassword);
         Button loginButton = (Button) findViewById(R.id.buttonLogin);
+        Button signupButton = (Button) findViewById(R.id.buttonSignupFromLogin);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +50,14 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
+            }
+        });
 
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(intent);
             }
         });
 
