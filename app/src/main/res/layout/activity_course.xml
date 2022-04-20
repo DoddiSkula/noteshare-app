@@ -6,25 +6,23 @@
     android:orientation="vertical"
     android:background="@color/light_grey">
 
-    <EditText
+    <TextView
         android:id="@+id/courseTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:textColor="@color/black"
         android:layout_margin="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
         android:text="@string/courseName" />
 
-    <EditText
-        android:id="@+id/searchBar_File"
-        style="@style/Widget.AppCompat.EditText"
+    <TextView
+        android:id="@+id/fileText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:textColor="@color/black"
         android:layout_margin="12dp"
-        android:ems="10"
-        android:hint="@string/search_for_a_file"
-        android:inputType="text"
-        android:autofillHints="course" />
+        android:text="@string/files" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
