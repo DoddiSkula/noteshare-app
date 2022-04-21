@@ -7,8 +7,8 @@
     tools:context=".ui.upload.UploadActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="292dp"
+        android:layout_height="438dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,36 +19,45 @@
             android:id="@+id/uploadPageName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="48dp"
             android:ems="10"
-            android:textSize="24sp"
+            android:text="@string/upLoadPageStringName"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:text="@string/upLoadPageStringName"
-            android:layout_marginBottom="48dp"/>
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/uploadFileName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
             android:layout_marginBottom="12dp"
-            android:hint="Title" />
+            android:ems="10"
+            android:hint="Title"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/uploadFileDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textMultiLine"
             android:layout_marginBottom="12dp"
-            android:hint="Description"/>
+            android:ems="10"
+            android:hint="Description"
+            android:inputType="textMultiLine" />
 
         <Button
             android:id="@+id/selectFileButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Select a file" />
+
+        <TextView
+            android:id="@+id/uploadFileText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:ems="10"
+            android:hint="No file selected..."
+            android:inputType="textMultiLine" />
 
         <Button
             android:id="@+id/uploadButton"
