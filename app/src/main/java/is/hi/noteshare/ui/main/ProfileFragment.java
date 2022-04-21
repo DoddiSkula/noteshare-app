@@ -66,6 +66,9 @@ public class ProfileFragment extends Fragment implements CourseAdapter.onCourseL
         mCourseAdapter = new CourseAdapter(ProfileFragment.this.getActivity(), mCourses, this);
         recyclerView.setAdapter(mCourseAdapter);
 
+        // Populate My Files list
+
+
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
