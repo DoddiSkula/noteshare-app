@@ -6,14 +6,12 @@ public class File {
     private Date date;
     private String title;
     private String description;
-    private String type;
 
-    public File(int fileId, Date fileDate, String fileTitle, String fileDescription, String fileType){
+    public File(int fileId, Date fileDate, String fileTitle, String fileDescription){
         id = fileId;
         date = fileDate;
         title = fileTitle;
         description = fileDescription;
-        type = fileType;
     }
 
     public int getId() {
@@ -44,11 +42,4 @@ public class File {
         this.description = description;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 }

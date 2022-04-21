@@ -3,13 +3,13 @@ package is.hi.noteshare.data.models;
 import java.util.List;
 
 public class User {
-    private int id;
+    private long id;
     private String username;
     private String email;
     private String password;
     private List<Course> courses;
 
-    public User(int userId, String username, String userEmail, String userPassword) {
+    public User(long userId, String username, String userEmail, String userPassword) {
         id = userId;
         this.username = username;
         email = userEmail;
@@ -19,11 +19,11 @@ public class User {
     public User() {
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

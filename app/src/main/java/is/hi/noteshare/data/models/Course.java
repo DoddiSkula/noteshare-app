@@ -4,22 +4,22 @@ import com.google.gson.annotations.SerializedName;
 
 public class Course {
     @SerializedName("id")
-    private int id;
+    private long id;
     @SerializedName("shortName")
     private String shortName;
     @SerializedName("longName")
     private String longName;
 
-    public Course(int courseId, String courseShortName, String courseLongName, String courseSchoolName) {
+    public Course(long courseId, String courseShortName, String courseLongName, String courseSchoolName) {
         id = courseId;
         shortName = courseShortName;
         longName = courseLongName;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

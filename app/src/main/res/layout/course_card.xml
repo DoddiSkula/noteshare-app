@@ -49,15 +49,6 @@
 
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/favButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center"
-            android:layout_marginRight="10dp"
-            android:background="@null"
-            app:srcCompat="@android:drawable/btn_star_big_off"
-            android:contentDescription="favourite button" />
 
     </androidx.cardview.widget.CardView>
 

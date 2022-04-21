@@ -11,23 +11,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/light_grey"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
         <TextView
             android:id="@+id/courseTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:layout_marginLeft="12dp"
             android:text="@string/courseName"
             android:textColor="@color/black"
             android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/favouriteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_baseline_favorite_border_24"
+            android:padding="12dp"
+            android:text="favourite"
+            android:textSize="12sp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp"/>
 
         <TextView
             android:id="@+id/fileText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="12dp"
             android:text="@string/files"
             android:textColor="@color/black"
             android:textSize="18sp" />

@@ -34,7 +34,7 @@ public class DataServiceImplementation implements DataService {
         String title = json.getString("title");
         String description = json.getString("description");
         String type = json.getString("type");
-        return new File(id, date, title, description, type);
+        return new File(id, date, title, description);
     }
 
     @Override
