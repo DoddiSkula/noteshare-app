@@ -30,14 +30,14 @@
             android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/editEmail"
+            android:id="@+id/editUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:ems="10"
-            android:hint="@string/emailHint"
+            android:hint="@string/usernameHint"
             android:importantForAutofill="no"
-            android:inputType="textEmailAddress" />
+            android:inputType="text" />
 
         <EditText
             android:id="@+id/editPassword"

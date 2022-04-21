@@ -1,4 +1,4 @@
-package is.hi.noteshare.ui.main;
+package is.hi.noteshare.ui.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

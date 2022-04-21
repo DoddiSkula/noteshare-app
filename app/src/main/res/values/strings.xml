@@ -6,6 +6,7 @@
     <string name="profile_picture">Profile picture</string>
     <string name="loginTitle">Welcome back!</string>
     <string name="passwordHint">Password</string>
+    <string name="usernameHint">Username</string>
     <string name="emailHint">Email</string>
     <string name="loginButton">Login</string>
     <string name="create_an_account">Create an account</string>

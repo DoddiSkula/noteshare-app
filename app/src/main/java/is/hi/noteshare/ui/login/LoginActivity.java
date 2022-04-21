@@ -1,22 +1,22 @@
 package is.hi.noteshare.ui.login;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONException;
 
 import is.hi.noteshare.R;
-import is.hi.noteshare.data.models.Course;
 import is.hi.noteshare.data.models.User;
+import is.hi.noteshare.services.DataService;
 import is.hi.noteshare.services.UserService;
+import is.hi.noteshare.services.implementation.DataServiceImplementation;
 import is.hi.noteshare.services.implementation.NetworkImplementation.NetworkCallback;
 import is.hi.noteshare.services.implementation.NetworkImplementation.NetworkManager;
 import is.hi.noteshare.services.implementation.UserServiceImplementation;
@@ -25,36 +25,51 @@ import is.hi.noteshare.ui.signup.SignupActivity;
 
 public class LoginActivity extends AppCompatActivity {
     private UserService mUserService;
+    private DataService mDataService;
+    private NetworkManager mNetworkManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mUserService = new UserServiceImplementation();
+        // Initialize services
+        mUserService = new UserServiceImplementation(LoginActivity.this);
+        mDataService = new DataServiceImplementation();
+        mNetworkManager = NetworkManager.getInstance(LoginActivity.this);
 
-        EditText emailInput = (EditText) findViewById(R.id.editEmail);
+        // Extract UI elements
+        EditText usernameInput = (EditText) findViewById(R.id.editUsername);
         EditText passwordInput = (EditText) findViewById(R.id.editPassword);
         Button loginButton = (Button) findViewById(R.id.buttonLogin);
         Button signupButton = (Button) findViewById(R.id.buttonSignupFromLogin);
 
+        // Initialize listeners
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = emailInput.getText().toString();
+                String username = usernameInput.getText().toString();
                 String password = passwordInput.getText().toString();
-                User user = mUserService.login(email, password);
 
-                if (user != null) {
-                    SharedPreferences sharedPref = LoginActivity.this.getSharedPreferences("NoteShare", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putLong("id", user.getId());
-                    editor.putString("email", user.getEmail());
-                    editor.putString("name", user.getName());
-                    editor.apply();
+                try {
+                    mNetworkManager.login(username, password, new NetworkCallback<String>() {
+                        @Override
+                        public void onSuccess(String result) {
+                            User user = mDataService.JsonToUser(result);
+                            mUserService.storeUser(user);
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        }
 
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
+                        @Override
+                        public void onFailure(String errorString) {
+                            Log.e("Login Response", errorString);
+                            Toast toast = Toast.makeText(getApplicationContext(), "Username or Password incorrect", Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
+                    });
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -64,18 +79,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(intent);
-            }
-        });
-        NetworkManager networkManager = NetworkManager.getInstance(this);
-        networkManager.getCourses(new NetworkCallback<List<Course>>() {
-            @Override
-            public void onSuccess(List<Course> result) {
-                Log.d("First course: ",result.toString());
-            }
-
-            @Override
-            public void onFailure(String errorString) {
-
             }
         });
     }
