@@ -1,4 +1,5 @@
 package is.hi.noteshare.data.models;
+
 import java.util.Date;
 
 public class File {
@@ -7,7 +8,7 @@ public class File {
     private String title;
     private String description;
 
-    public File(int fileId, Date fileDate, String fileTitle, String fileDescription){
+    public File(int fileId, Date fileDate, String fileTitle, String fileDescription) {
         id = fileId;
         date = fileDate;
         title = fileTitle;
@@ -17,6 +18,7 @@ public class File {
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -24,6 +26,7 @@ public class File {
     public Date getDate() {
         return date;
     }
+
     public void setDate(Date date) {
         this.date = date;
     }
@@ -31,6 +34,7 @@ public class File {
     public String getTitle() {
         return title;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -38,6 +42,7 @@ public class File {
     public String getDescription() {
         return description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
