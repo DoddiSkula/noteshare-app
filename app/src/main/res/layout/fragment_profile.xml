@@ -10,6 +10,15 @@
     android:paddingRight="20dp"
     android:background="@color/light_grey">
 
+    <TextView
+        android:id="@+id/signout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign out"
+        android:textSize="18dp"
+        android:textColor="@color/grey"
+        android:layout_marginTop="8dp"/>
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profilePicture"
         android:layout_width="85dp"

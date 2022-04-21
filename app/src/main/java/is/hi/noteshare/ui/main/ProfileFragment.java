@@ -23,6 +23,7 @@ import is.hi.noteshare.services.UserService;
 import is.hi.noteshare.services.implementation.UserServiceImplementation;
 import is.hi.noteshare.ui.adapters.CourseAdapter;
 import is.hi.noteshare.ui.course.CourseActivity;
+import is.hi.noteshare.ui.login.LoginActivity;
 
 public class ProfileFragment extends Fragment implements CourseAdapter.onCourseListener {
 
@@ -48,6 +49,7 @@ public class ProfileFragment extends Fragment implements CourseAdapter.onCourseL
         // Extract UI elements
         TextView profileName = (TextView) binding.profileName;
         TextView profileEmail = (TextView) binding.profileEmail;
+        TextView signout = (TextView) binding.signout;
         RecyclerView recyclerView = (RecyclerView) binding.myCoursesList;
 
         // Get logged in user
@@ -63,6 +65,15 @@ public class ProfileFragment extends Fragment implements CourseAdapter.onCourseL
         if (mCourses == null) mCourses = new ArrayList<>();
         mCourseAdapter = new CourseAdapter(ProfileFragment.this.getActivity(), mCourses, this);
         recyclerView.setAdapter(mCourseAdapter);
+
+        signout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mUserService.storeUser(new User());
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return root;
     }
