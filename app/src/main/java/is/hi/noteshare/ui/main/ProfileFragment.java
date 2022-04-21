@@ -31,6 +31,7 @@ public class ProfileFragment extends Fragment implements CourseAdapter.onCourseL
     private UserService mUserService;
     private CourseAdapter mCourseAdapter;
     private List<Course> mCourses;
+    private RecyclerView mRecyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class ProfileFragment extends Fragment implements CourseAdapter.onCourseL
         TextView profileName = (TextView) binding.profileName;
         TextView profileEmail = (TextView) binding.profileEmail;
         TextView signout = (TextView) binding.signout;
-        RecyclerView recyclerView = (RecyclerView) binding.myCoursesList;
+        mRecyclerView = (RecyclerView) binding.myCoursesList;
 
         // Get logged in user
         User user = mUserService.getStoredUser();
@@ -59,12 +60,12 @@ public class ProfileFragment extends Fragment implements CourseAdapter.onCourseL
         // Initialize UI
         profileName.setText(user.getUsername());
         profileEmail.setText(user.getEmail());
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
         // Populate My Courses list
         if (mCourses == null) mCourses = new ArrayList<>();
         mCourseAdapter = new CourseAdapter(ProfileFragment.this.getActivity(), mCourses, this);
-        recyclerView.setAdapter(mCourseAdapter);
+        mRecyclerView.setAdapter(mCourseAdapter);
 
         // Populate My Files list
 
@@ -79,6 +80,16 @@ public class ProfileFragment extends Fragment implements CourseAdapter.onCourseL
         });
 
         return root;
+    }
+
+    @Override
+    public void onResume() {
+        User user = mUserService.getStoredUser();
+        mCourses = user.getCourses();
+        if (mCourses == null) mCourses = new ArrayList<>();
+        mCourseAdapter = new CourseAdapter(ProfileFragment.this.getActivity(), mCourses, this);
+        mRecyclerView.setAdapter(mCourseAdapter);
+        super.onResume();
     }
 
     @Override

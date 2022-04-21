@@ -1,7 +1,6 @@
 package is.hi.noteshare.services.implementation.NetworkImplementation;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -106,7 +105,6 @@ public class NetworkManager {
                 Type Type = new TypeToken<User>() {
                 }.getType();
                 User user = gson.fromJson(response, Type);
-                Log.e("RPS", response);
                 callback.onSuccess(user);
             }
         }, new Response.ErrorListener() {

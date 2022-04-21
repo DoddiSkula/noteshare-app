@@ -70,6 +70,7 @@ public class CourseActivity extends AppCompatActivity {
                                 favouriteButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_favorite_24, 0, 0, 0);
                                 Toast toast = Toast.makeText(getApplicationContext(), "Course added to My Courses", Toast.LENGTH_SHORT);
                                 toast.show();
+                                updateUser(mUserService.getStoredUser());
                             }
 
                             @Override
@@ -95,6 +96,7 @@ public class CourseActivity extends AppCompatActivity {
                                 favouriteButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_favorite_border_24, 0, 0, 0);
                                 Toast toast = Toast.makeText(getApplicationContext(), "Course removed from My Courses", Toast.LENGTH_SHORT);
                                 toast.show();
+                                updateUser(mUserService.getStoredUser());
                             }
 
                             @Override
@@ -135,5 +137,19 @@ public class CourseActivity extends AppCompatActivity {
 
         favouriteButton.setText("favourite");
         favouriteButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_baseline_favorite_border_24, 0, 0, 0);
+    }
+
+    private void updateUser(User user) {
+        mNetworkManager.getUser(user.getUsername(), new NetworkCallback<User>() {
+            @Override
+            public void onSuccess(User user) {
+                mUserService.storeUser(user);
+            }
+
+            @Override
+            public void onFailure(String errorString) {
+                Log.e("Get User", errorString);
+            }
+        });
     }
 }
