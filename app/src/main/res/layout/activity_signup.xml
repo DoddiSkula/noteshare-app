@@ -31,12 +31,12 @@
             />
 
         <EditText
-            android:id="@+id/editName"
+            android:id="@+id/editUsernameSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="@string/nameHint"
+            android:hint="@string/usernameHint"
             android:layout_marginBottom="12dp"
             android:importantForAutofill="no" />
 

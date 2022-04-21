@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import is.hi.noteshare.data.models.Course;
@@ -59,6 +60,7 @@ public class ProfileFragment extends Fragment implements CourseAdapter.onCourseL
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
 
         // Populate My Courses list
+        if (mCourses == null) mCourses = new ArrayList<>();
         mCourseAdapter = new CourseAdapter(ProfileFragment.this.getActivity(), mCourses, this);
         recyclerView.setAdapter(mCourseAdapter);
 

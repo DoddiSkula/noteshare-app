@@ -208,12 +208,7 @@ public class NetworkManager {
 
             @Override
             protected Response<String> parseNetworkResponse(NetworkResponse response) {
-                String responseString = "";
-                if (response != null) {
-                    responseString = String.valueOf(response.statusCode);
-                    // can get more details such as response.headers
-                }
-                return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+                return super.parseNetworkResponse(response);
             }
         };
         mQueue.add(request);
