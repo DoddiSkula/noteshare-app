@@ -18,9 +18,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="5dp"
         android:contentDescription="@string/profile_picture"
-        android:src="@drawable/matthias"
+        android:src="@drawable/user"
         tools:ignore="ImageContrastCheck"
-        app:civ_border_width="2dp"
+        app:civ_border_width="1dp"
         app:civ_border_color="@color/grey"/>
 
     <TextView
@@ -51,8 +51,9 @@
         android:layout_marginBottom="6dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/myCoursesList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="200dp" />
 
     <TextView
         android:id="@+id/myUploads"

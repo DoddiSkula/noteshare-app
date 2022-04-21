@@ -13,7 +13,6 @@ import is.hi.noteshare.services.DataService;
 import is.hi.noteshare.services.Network;
 
 
-
 public class CoursesServiceImplementation implements CoursesService {
 
     private final Network mNetwork;
@@ -23,6 +22,7 @@ public class CoursesServiceImplementation implements CoursesService {
         this.mNetwork = new NetworkImplementationOld();
         this.mDataService = new DataServiceImplementation();
     }
+
     @Override
     public List<Course> getCourses() throws JSONException {
 
@@ -31,10 +31,10 @@ public class CoursesServiceImplementation implements CoursesService {
 
         try {
             newJsonArr = mNetwork.getCourses();
-            for(int i = 0; i < newJsonArr.length(); i++){
+            for (int i = 0; i < newJsonArr.length(); i++) {
                 newJavaArr.add(mDataService.JsonToCourse((JSONObject) newJsonArr.get(i)));
             }
-        } catch (JSONException e){
+        } catch (JSONException e) {
             e.printStackTrace();
         }
 
@@ -42,16 +42,17 @@ public class CoursesServiceImplementation implements CoursesService {
     }
 
     @Override
-    public List<Course> getCourses(ArrayList<Course> courses, String name) {
+    public List<Course> getCourses(List<Course> courses, String name) {
 
-        ArrayList<Course> searchList = new ArrayList<Course>();
+        List<Course> searchList = new ArrayList<>();
 
-        for(Course element : courses){
-            if(element.getLongName().contains(name) || element.getShortName().contains(name)){
+        for (Course element : courses) {
+            if (element.getLongName().toLowerCase().contains(name.toLowerCase())
+                    || element.getShortName().toLowerCase().contains(name.toLowerCase())) {
                 searchList.add(element);
             }
         }
-        
+
         return searchList;
     }
 }

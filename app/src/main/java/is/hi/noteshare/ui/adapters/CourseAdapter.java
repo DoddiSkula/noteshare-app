@@ -16,7 +16,7 @@ import is.hi.noteshare.data.models.Course;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseHolder> {
 
-    private final List<Course> mCourses;
+    private List<Course> mCourses;
     private final Context mContext;
     private final onCourseListener mOnCourseListener;
 
@@ -24,6 +24,10 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseHold
         mContext = context;
         mCourses = courses;
         mOnCourseListener = onCourseListener;
+    }
+
+    public void setCourses(List<Course> courses) {
+        mCourses = courses;
     }
 
     @NonNull
