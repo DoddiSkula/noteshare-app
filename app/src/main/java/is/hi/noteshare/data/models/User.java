@@ -1,37 +1,44 @@
 package is.hi.noteshare.data.models;
 
+import java.util.List;
+
 public class User {
     private int id;
-    private String name;
+    private String username;
     private String email;
     private String password;
+    private List<Course> courses;
 
-    public User(int userId, String userName, String userEmail, String userPassword) {
+    public User(int userId, String username, String userEmail, String userPassword) {
         id = userId;
-        name = userName;
+        this.username = username;
         email = userEmail;
         password = userPassword;
     }
 
-    public User() {}
+    public User() {
+    }
 
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
-    public void setName(String name) {
-        this.name = name;
+
+    public void setUsername(String name) {
+        this.username = name;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
+
     public String getEmail() {
         return email;
     }
@@ -42,5 +49,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 }

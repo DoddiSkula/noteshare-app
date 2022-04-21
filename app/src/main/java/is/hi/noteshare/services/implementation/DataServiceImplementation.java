@@ -2,9 +2,13 @@ package is.hi.noteshare.services.implementation;
 
 import android.annotation.SuppressLint;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -30,20 +34,19 @@ public class DataServiceImplementation implements DataService {
         String title = json.getString("title");
         String description = json.getString("description");
         String type = json.getString("type");
-        return new File(id, date, title,description,type);
+        return new File(id, date, title, description, type);
     }
 
     @Override
-    public User JsonToUser(JSONObject json) throws JSONException{
-        int id = json.getInt("id");
-        String name = json.getString("name");
-        String email = json.getString("email");
-        String password = json.getString("password");
-        return new User(id, name, email, password);
+    public User JsonToUser(String userInfo) {
+        Gson gson = new Gson();
+        Type Type = new TypeToken<User>() {
+        }.getType();
+        return gson.fromJson(userInfo, Type);
     }
 
     @Override
-    public Course JsonToCourse(JSONObject json) throws JSONException{
+    public Course JsonToCourse(JSONObject json) throws JSONException {
         int id = json.getInt("id");
         String shortName = json.getString("shortName");
         String longName = json.getString("longName");

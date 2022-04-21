@@ -1,4 +1,4 @@
-package is.hi.noteshare.ui.main;
+package is.hi.noteshare.ui.adapters;
 
 import android.content.Context;
 
@@ -10,6 +10,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import is.hi.noteshare.R;
+import is.hi.noteshare.ui.main.CoursesFragment;
+import is.hi.noteshare.ui.main.ProfileFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to

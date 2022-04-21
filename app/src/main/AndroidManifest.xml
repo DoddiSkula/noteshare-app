@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NoteShare">
         <activity
-            android:name=".ui.signup.Signup"
+            android:name=".ui.signup.SignupActivity"
             android:exported="false" />
         <activity
             android:name=".ui.login.LoginActivity"

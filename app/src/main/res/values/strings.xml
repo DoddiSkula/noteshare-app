@@ -6,6 +6,7 @@
     <string name="profile_picture">Profile picture</string>
     <string name="loginTitle">Welcome back!</string>
     <string name="passwordHint">Password</string>
+    <string name="usernameHint">Username</string>
     <string name="emailHint">Email</string>
     <string name="loginButton">Login</string>
     <string name="create_an_account">Create an account</string>
@@ -15,7 +16,7 @@
     <string name="search_for_a_file">Search for a file</string>
     <string name="courseName">Course Name</string>
     <string name="files">Files</string>
-    <string name="upLoadPageStringName">Upload</string>
+    <string name="upLoadPageStringName">Upload Notes</string>
     <string name="upLoadFileDescription">File Description</string>
     <string name="testButton">Test</string>
 </resources>
