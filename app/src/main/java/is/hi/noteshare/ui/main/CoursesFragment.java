@@ -34,6 +34,7 @@ public class CoursesFragment extends Fragment implements CourseAdapter.onCourseL
     private CourseAdapter mCourseAdapter;
     private NetworkManager mNetworkManager;
     private List<Course> mCourses;
+    private List<Course> mFilteredCourses;
 
 
     @Override
@@ -79,8 +80,8 @@ public class CoursesFragment extends Fragment implements CourseAdapter.onCourseL
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                List<Course> filteredCourses = mCoursesService.getCourses(mCourses, charSequence.toString());
-                mCourseAdapter.setCourses(filteredCourses);
+                mFilteredCourses = mCoursesService.getCourses(mCourses, charSequence.toString());
+                mCourseAdapter.setCourses(mFilteredCourses);
                 recyclerView.setAdapter(mCourseAdapter);
             }
 
@@ -105,8 +106,8 @@ public class CoursesFragment extends Fragment implements CourseAdapter.onCourseL
     @Override
     public void onCourseClick(int position) {
         Intent intent = new Intent(this.getActivity(), CourseActivity.class);
-        intent.putExtra("Course", mCourses.get(position).getLongName());
-        intent.putExtra("CourseId", mCourses.get(position).getId());
+        intent.putExtra("Course", mFilteredCourses.get(position).getLongName());
+        intent.putExtra("CourseId", mFilteredCourses.get(position).getId());
         startActivity(intent);
     }
 }

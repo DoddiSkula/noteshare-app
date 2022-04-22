@@ -20,13 +20,7 @@ public class DataServiceImplementation implements DataService {
     @SuppressLint("SimpleDateFormat")
     @Override
     public File JsonToFile(JSONObject json) throws JSONException {
-        int id = json.getInt("id");
-        String strdate = json.getString("date");
-        String date = "";
-        String title = json.getString("title");
-        String description = json.getString("description");
-        String type = json.getString("type");
-        return new File(id, date, title, description);
+      return null;
     }
 
     @Override
@@ -39,10 +33,6 @@ public class DataServiceImplementation implements DataService {
 
     @Override
     public Course JsonToCourse(JSONObject json) throws JSONException {
-        int id = json.getInt("id");
-        String shortName = json.getString("shortName");
-        String longName = json.getString("longName");
-        String schoolName = json.getString("schoolName");
-        return new Course(id, shortName, longName, schoolName);
+        return null;
     }
 }

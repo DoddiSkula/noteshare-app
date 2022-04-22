@@ -5,12 +5,14 @@ public class File {
     private String date;
     private String title;
     private String description;
+    private long user;
 
-    public File(long fileId, String fileDate, String fileTitle, String fileDescription) {
+    public File(long fileId, String fileDate, String fileTitle, String fileDescription, long userId) {
         id = fileId;
         date = fileDate;
         title = fileTitle;
         description = fileDescription;
+        user = userId;
     }
 
     public long getId() {
@@ -45,4 +47,11 @@ public class File {
         this.description = description;
     }
 
+    public long getUser() {
+        return user;
+    }
+
+    public void setUser(long user) {
+        this.user = user;
+    }
 }

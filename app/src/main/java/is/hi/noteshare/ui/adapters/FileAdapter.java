@@ -68,7 +68,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileHolder> {
 
         void setDetails(File file) {
             fileName.setText(file.getTitle());
-            uploaderName.setText(file.getTitle());
+            uploaderName.setText(file.getDescription());
         }
 
         @Override
