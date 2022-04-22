@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
+import java.sql.Date;
 import java.util.List;
 
 import is.hi.noteshare.data.models.Course;
@@ -314,8 +315,50 @@ public class NetworkManager {
         mQueue.add(request);
     }
 
-    /*
-    logout(user: User); Engin þörf
-    upload(file: File); Bíða
-     */
+    public void uploadFile(long userId, long courseId, Date date, String title, String description, String fileName, int likes, byte[] data, NetworkCallback<String> callback) throws JSONException {
+        JSONObject jsonBody = new JSONObject();
+        jsonBody.put("user_id", userId);
+        jsonBody.put("date", date);
+        jsonBody.put("title", title);
+        jsonBody.put("description", description);
+        jsonBody.put("file_name", fileName);
+        jsonBody.put("likes", likes);
+        jsonBody.put("data", data);
+
+        final String requestBody = jsonBody.toString();
+
+        StringRequest request = new StringRequest(Request.Method.POST, BASE_URL + "course/"+ Long.toString(courseId) + "upload", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                callback.onSuccess(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                return requestBody == null ? null : requestBody.getBytes(StandardCharsets.UTF_8);
+            }
+
+            @Override
+            protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                String responseString = "";
+                if (response != null) {
+                    responseString = String.valueOf(response.statusCode);
+                    // can get more details such as response.headers
+                }
+                return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+            }
+        };
+        mQueue.add(request);
+    }
+    
 }
