@@ -9,6 +9,8 @@ import is.hi.noteshare.data.models.User;
 
 public interface DataService {
     File JsonToFile(JSONObject json) throws JSONException;
-    User JsonToUser(String json);
+
     Course JsonToCourse(JSONObject json) throws JSONException;
+
+    User JsonToUser(String json);
 }

@@ -16,11 +16,6 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public void logout(User user) {
-
-    }
-
-    @Override
     public void storeUser(User user) {
         SharedPreferences sharedPref = mContext.getSharedPreferences("NoteShare", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();

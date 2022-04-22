@@ -1,7 +1,6 @@
 package is.hi.noteshare.services.implementation.NetworkImplementation;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -329,7 +328,7 @@ public class NetworkManager {
 
         final String requestBody = jsonBody.toString();
 
-        StringRequest request = new StringRequest(Request.Method.POST, BASE_URL + "course/"+ Long.toString(courseId) + "/upload", new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, BASE_URL + "course/" + Long.toString(courseId) + "/upload", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 callback.onSuccess(response);
@@ -362,5 +361,5 @@ public class NetworkManager {
         };
         mQueue.add(request);
     }
-    
+
 }

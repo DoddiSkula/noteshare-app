@@ -29,7 +29,7 @@ import is.hi.noteshare.services.implementation.UserServiceImplementation;
 import is.hi.noteshare.ui.adapters.FileAdapter;
 import is.hi.noteshare.ui.upload.UploadActivity;
 
-public class CourseActivity extends AppCompatActivity  implements FileAdapter.onFileListener {
+public class CourseActivity extends AppCompatActivity implements FileAdapter.onFileListener {
 
     private NetworkManager mNetworkManager;
     private UserService mUserService;

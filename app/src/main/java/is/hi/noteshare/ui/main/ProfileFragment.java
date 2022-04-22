@@ -102,6 +102,7 @@ public class ProfileFragment extends Fragment implements FileAdapter.onFileListe
                 mFileAdapter = new FileAdapter(ProfileFragment.this.getActivity(), mFiles, ProfileFragment.this);
                 mRecyclerViewFiles.setAdapter(mFileAdapter);
             }
+
             @Override
             public void onFailure(String errorString) {
                 Log.e("Get Files", errorString);

@@ -1,7 +1,5 @@
 package is.hi.noteshare.services.implementation;
 
-import android.annotation.SuppressLint;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -17,10 +15,9 @@ import is.hi.noteshare.services.DataService;
 
 public class DataServiceImplementation implements DataService {
 
-    @SuppressLint("SimpleDateFormat")
     @Override
     public File JsonToFile(JSONObject json) throws JSONException {
-      return null;
+        return null;
     }
 
     @Override

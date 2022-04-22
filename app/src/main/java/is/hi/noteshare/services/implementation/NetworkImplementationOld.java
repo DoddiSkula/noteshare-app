@@ -1,7 +1,5 @@
 package is.hi.noteshare.services.implementation;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,7 +10,8 @@ import is.hi.noteshare.services.Network;
 
 public class NetworkImplementationOld implements Network {
 
-    public NetworkImplementationOld() {}
+    public NetworkImplementationOld() {
+    }
 
     public JSONArray getCourses() throws JSONException {
         JSONArray courses = new JSONArray();
@@ -67,7 +66,9 @@ public class NetworkImplementationOld implements Network {
         courses.put(course7);
 
         return courses;
-    };
+    }
+
+    ;
 
     public JSONObject getCourse(long id) throws JSONException {
         JSONObject course = new JSONObject();
@@ -85,7 +86,9 @@ public class NetworkImplementationOld implements Network {
         user.put("email", "admin@admin.com");
         user.put("password", "123");
         return user;
-    };
+    }
+
+    ;
 
     public JSONArray getFilesByCourse(long id) throws JSONException {
         JSONArray files = new JSONArray();
@@ -98,7 +101,9 @@ public class NetworkImplementationOld implements Network {
         file1.put("type", ".pdf");
         files.put(file1);
         return files;
-    };
+    }
+
+    ;
 
     public JSONObject getFile(long id) throws JSONException {
         JSONObject file = new JSONObject();
@@ -108,16 +113,7 @@ public class NetworkImplementationOld implements Network {
         file.put("description", "Nú á DVD!");
         file.put("type", ".pdf");
         return file;
-    };
+    }
 
-    /*
-    getCourses(name: String);
-    getCourse(id: long);
-    getUser(id: long);
-    login(user: User);
-    logout(user: User);
-    signup(user: User);
-    upload(file: File);
-    favourite(userId: long, courseId: long);
-    unFavourite(userId: long, courseId: long);*/
+    ;
 }

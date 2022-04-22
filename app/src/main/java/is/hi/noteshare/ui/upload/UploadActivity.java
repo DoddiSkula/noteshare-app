@@ -110,7 +110,7 @@ public class UploadActivity extends AppCompatActivity {
                 byte[] emptyData = new byte[0];
 
                 try {
-                    mNetworkManager.uploadFile(userId, courseId, today, title, description, "file.pdf", 0, emptyData,  new NetworkCallback<String>() {
+                    mNetworkManager.uploadFile(userId, courseId, today, title, description, "file.pdf", 0, emptyData, new NetworkCallback<String>() {
                         @Override
                         public void onSuccess(String result) {
                             Toast toast = Toast.makeText(getApplicationContext(), "File Uploaded", Toast.LENGTH_SHORT);

@@ -19,6 +19,7 @@ public class Course {
     public long getId() {
         return id;
     }
+
     public void setId(long id) {
         this.id = id;
     }
@@ -26,6 +27,7 @@ public class Course {
     public String getShortName() {
         return shortName;
     }
+
     public void setShortName(String shortName) {
         this.shortName = shortName;
     }
@@ -33,6 +35,7 @@ public class Course {
     public String getLongName() {
         return longName;
     }
+
     public void setLongName(String longName) {
         this.longName = longName;
     }
