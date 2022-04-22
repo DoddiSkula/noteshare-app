@@ -9,6 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -18,17 +20,22 @@ import java.util.List;
 
 import is.hi.noteshare.R;
 import is.hi.noteshare.data.models.Course;
+import is.hi.noteshare.data.models.File;
 import is.hi.noteshare.data.models.User;
 import is.hi.noteshare.services.UserService;
 import is.hi.noteshare.services.implementation.NetworkImplementation.NetworkCallback;
 import is.hi.noteshare.services.implementation.NetworkImplementation.NetworkManager;
 import is.hi.noteshare.services.implementation.UserServiceImplementation;
+import is.hi.noteshare.ui.adapters.FileAdapter;
 import is.hi.noteshare.ui.upload.UploadActivity;
 
-public class CourseActivity extends AppCompatActivity {
+public class CourseActivity extends AppCompatActivity  implements FileAdapter.onFileListener {
 
     private NetworkManager mNetworkManager;
     private UserService mUserService;
+    private RecyclerView mRecyclerView;
+    private FileAdapter mFileAdapter;
+    private List<File> mFiles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +50,7 @@ public class CourseActivity extends AppCompatActivity {
         TextView coursetitle = (TextView) findViewById(R.id.courseTitle);
         Button favouriteButton = (Button) findViewById(R.id.favouriteButton);
         FloatingActionButton addButton = (FloatingActionButton) findViewById(R.id.floatingAddButton);
+        mRecyclerView = (RecyclerView) findViewById(R.id.courseFilesList);
 
         // Get course info
         Intent intent = getIntent();
@@ -56,6 +64,22 @@ public class CourseActivity extends AppCompatActivity {
         // Initialize UI
         setFavouriteButton(user, courseId, favouriteButton);
         coursetitle.setText(courseName);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(CourseActivity.this));
+
+        // Get course files
+        mNetworkManager.getFilesByCourse(courseId, new NetworkCallback<List<File>>() {
+            @Override
+            public void onSuccess(List<File> files) {
+                mFiles = files;
+                mFileAdapter = new FileAdapter(CourseActivity.this, mFiles, CourseActivity.this);
+                mRecyclerView.setAdapter(mFileAdapter);
+            }
+
+            @Override
+            public void onFailure(String errorString) {
+                Log.e("Get Files", errorString);
+            }
+        });
 
         // Initialize listeners
         favouriteButton.setOnClickListener(new View.OnClickListener() {
@@ -151,5 +175,10 @@ public class CourseActivity extends AppCompatActivity {
                 Log.e("Get User", errorString);
             }
         });
+    }
+
+    @Override
+    public void onFileClick(int position) {
+
     }
 }

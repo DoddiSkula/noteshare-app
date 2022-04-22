@@ -10,73 +10,87 @@
     android:paddingRight="20dp"
     android:background="@color/light_grey">
 
-    <TextView
-        android:id="@+id/signout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign out"
-        android:textSize="18dp"
-        android:textColor="@color/grey"
-        android:layout_marginTop="8dp"/>
+        android:layout_height="match_parent">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profilePicture"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="5dp"
-        android:contentDescription="@string/profile_picture"
-        android:src="@drawable/user"
-        tools:ignore="ImageContrastCheck"
-        app:civ_border_width="1dp"
-        app:civ_border_color="@color/grey"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/profileName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textAlignment="center"
-        android:textSize="18dp"
-        android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/signout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Sign out"
+                android:textColor="@color/grey"
+                android:textSize="18dp" />
 
-    <TextView
-        android:id="@+id/profileEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textAlignment="center"
-        android:textSize="14dp"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profilePicture"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:contentDescription="@string/profile_picture"
+                android:src="@drawable/user"
+                app:civ_border_color="@color/grey"
+                app:civ_border_width="1dp"
+                tools:ignore="ImageContrastCheck" />
 
-    <TextView
-        android:id="@+id/myCourses"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="My Courses"
-        android:textSize="18dp"
-        android:textColor="@color/black"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="6dp"/>
+            <TextView
+                android:id="@+id/profileName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/myCoursesList"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
+            <TextView
+                android:id="@+id/profileEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="14dp" />
 
-    <TextView
-        android:id="@+id/myUploads"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Uploads"
-        android:textSize="18dp"
-        android:textColor="@color/black"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="6dp"/>
+            <TextView
+                android:id="@+id/myCourses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="6dp"
+                android:text="My Courses"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/myCoursesList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/myUploads"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="6dp"
+                android:text="My Uploads"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/userFilesList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
 
 

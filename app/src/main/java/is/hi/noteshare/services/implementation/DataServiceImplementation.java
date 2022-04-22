@@ -9,9 +9,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
-import java.text.ParseException;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 
 import is.hi.noteshare.data.models.Course;
 import is.hi.noteshare.data.models.File;
@@ -25,12 +22,7 @@ public class DataServiceImplementation implements DataService {
     public File JsonToFile(JSONObject json) throws JSONException {
         int id = json.getInt("id");
         String strdate = json.getString("date");
-        Date date = new Date();
-        try {
-            date = new SimpleDateFormat("dd/MM/yyyy").parse(strdate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        String date = "";
         String title = json.getString("title");
         String description = json.getString("description");
         String type = json.getString("type");

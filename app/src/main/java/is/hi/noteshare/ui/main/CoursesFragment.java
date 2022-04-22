@@ -60,7 +60,6 @@ public class CoursesFragment extends Fragment implements CourseAdapter.onCourseL
         mNetworkManager.getCourses(new NetworkCallback<List<Course>>() {
             @Override
             public void onSuccess(List<Course> courses) {
-
                 mCourses = courses;
                 mCourseAdapter = new CourseAdapter(CoursesFragment.this.getActivity(), mCourses, CoursesFragment.this);
                 recyclerView.setAdapter(mCourseAdapter);

@@ -1,33 +1,31 @@
 package is.hi.noteshare.data.models;
 
-import java.util.Date;
-
 public class File {
-    private int id;
-    private Date date;
+    private long id;
+    private String date;
     private String title;
     private String description;
 
-    public File(int fileId, Date fileDate, String fileTitle, String fileDescription) {
+    public File(long fileId, String fileDate, String fileTitle, String fileDescription) {
         id = fileId;
         date = fileDate;
         title = fileTitle;
         description = fileDescription;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

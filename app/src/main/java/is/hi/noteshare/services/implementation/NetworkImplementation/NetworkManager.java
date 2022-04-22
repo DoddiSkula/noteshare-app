@@ -120,7 +120,29 @@ public class NetworkManager {
     public void getFilesByCourse(long id, NetworkCallback<List<File>> callback) {
         String strId = Long.toString(id);
         StringRequest request = new StringRequest(
-                Request.Method.GET, BASE_URL + "course" + strId, new Response.Listener<String>() {
+                Request.Method.GET, BASE_URL + "course/" + strId + "/files", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Gson gson = new Gson();
+                Type listType = new TypeToken<List<File>>() {
+                }.getType();
+                List<File> files = gson.fromJson(response, listType);
+                callback.onSuccess(files);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                callback.onFailure(error.toString());
+            }
+        }
+        );
+        mQueue.add(request);
+    }
+
+    public void getFilesByUser(long id, NetworkCallback<List<File>> callback) {
+        String strId = Long.toString(id);
+        StringRequest request = new StringRequest(
+                Request.Method.GET, BASE_URL + "user/" + strId + "/files", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Gson gson = new Gson();
