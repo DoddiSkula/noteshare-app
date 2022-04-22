@@ -142,6 +142,7 @@ public class CourseActivity extends AppCompatActivity  implements FileAdapter.on
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(CourseActivity.this, UploadActivity.class);
+                intent.putExtra("CourseId", courseId);
                 startActivity(intent);
             }
         });

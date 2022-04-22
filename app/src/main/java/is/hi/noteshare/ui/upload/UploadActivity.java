@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -21,16 +22,24 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONException;
+
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 
 import is.hi.noteshare.R;
+import is.hi.noteshare.data.models.User;
+import is.hi.noteshare.services.UserService;
+import is.hi.noteshare.services.implementation.NetworkImplementation.NetworkCallback;
+import is.hi.noteshare.services.implementation.NetworkImplementation.NetworkManager;
+import is.hi.noteshare.services.implementation.UserServiceImplementation;
 
 public class UploadActivity extends AppCompatActivity {
 
-    private Button selectButton, uploadButton;
     private TextView uploadFileText;
-    private EditText uploadFileDescription, uploadFileName;
+    private NetworkManager mNetworkManager;
+    private UserService mUserService;
 
     private int REQ_PDF = 21;
     private String encodedPDF;
@@ -41,11 +50,24 @@ public class UploadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
-        // Extract UI elements
+        // Initialize services
+        mNetworkManager = NetworkManager.getInstance(UploadActivity.this);
+        mUserService = new UserServiceImplementation(UploadActivity.this);
 
-        selectButton = findViewById(R.id.selectFileButton);
-        uploadButton = findViewById(R.id.uploadButton);
+        // Extract UI elements
+        EditText titleInput = (EditText) findViewById(R.id.uploadFileName);
+        EditText descriptionInput = (EditText) findViewById(R.id.uploadFileDescription);
+        Button selectButton = findViewById(R.id.selectFileButton);
+        Button uploadButton = findViewById(R.id.uploadButton);
         uploadFileText = findViewById(R.id.uploadFileText);
+
+        // Get course info
+        Intent intent = getIntent();
+        long courseId = intent.getLongExtra("CourseId", 0);
+
+        // Get logged in user
+        User user = mUserService.getStoredUser();
+        long userId = user.getId();
 
         // Initialize Activity Result Launcher
         ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
@@ -82,7 +104,30 @@ public class UploadActivity extends AppCompatActivity {
         uploadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                uploadDocument();
+                String title = titleInput.getText().toString();
+                String description = descriptionInput.getText().toString();
+                Date today = new Date();
+                byte[] emptyData = new byte[0];
+
+                try {
+                    mNetworkManager.uploadFile(userId, courseId, today, title, description, "file.pdf", 0, emptyData,  new NetworkCallback<String>() {
+                        @Override
+                        public void onSuccess(String result) {
+                            Toast toast = Toast.makeText(getApplicationContext(), "File Uploaded", Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
+
+                        @Override
+                        public void onFailure(String errorString) {
+                            Log.e("Upload Response", errorString);
+                            Toast toast = Toast.makeText(getApplicationContext(), "Upload failed", Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
+                    });
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                finish();
             }
         });
 
@@ -108,11 +153,5 @@ public class UploadActivity extends AppCompatActivity {
         cursor.moveToFirst();
         return cursor.getString(column_index);
     }
-
-    private void uploadDocument() {
-
-
-    }
-
 
 }

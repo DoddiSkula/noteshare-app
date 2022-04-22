@@ -1,6 +1,7 @@
 package is.hi.noteshare.services.implementation.NetworkImplementation;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -19,7 +20,7 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import is.hi.noteshare.data.models.Course;
@@ -318,6 +319,7 @@ public class NetworkManager {
     public void uploadFile(long userId, long courseId, Date date, String title, String description, String fileName, int likes, byte[] data, NetworkCallback<String> callback) throws JSONException {
         JSONObject jsonBody = new JSONObject();
         jsonBody.put("user_id", userId);
+        jsonBody.put("course_id", courseId);
         jsonBody.put("date", date);
         jsonBody.put("title", title);
         jsonBody.put("description", description);
@@ -327,7 +329,7 @@ public class NetworkManager {
 
         final String requestBody = jsonBody.toString();
 
-        StringRequest request = new StringRequest(Request.Method.POST, BASE_URL + "course/"+ Long.toString(courseId) + "upload", new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, BASE_URL + "course/"+ Long.toString(courseId) + "/upload", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 callback.onSuccess(response);
