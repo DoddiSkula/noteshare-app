@@ -108,8 +108,14 @@ public class CoursesFragment extends Fragment implements CourseAdapter.onCourseL
     @Override
     public void onCourseClick(int position) {
         Intent intent = new Intent(this.getActivity(), CourseActivity.class);
-        intent.putExtra("Course", mFilteredCourses.get(position).getLongName());
-        intent.putExtra("CourseId", mFilteredCourses.get(position).getId());
+        if(mFilteredCourses == null) {
+            intent.putExtra("Course", mCourses.get(position).getLongName());
+            intent.putExtra("CourseId", mCourses.get(position).getId());
+        } else {
+            intent.putExtra("Course", mFilteredCourses.get(position).getLongName());
+            intent.putExtra("CourseId", mFilteredCourses.get(position).getId());
+        }
+
         startActivity(intent);
     }
 }

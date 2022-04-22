@@ -16,6 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import is.hi.noteshare.R;
@@ -151,6 +152,7 @@ public class CourseActivity extends AppCompatActivity implements FileAdapter.onF
 
     private void setFavouriteButton(User user, long courseId, Button favouriteButton) {
         List<Course> userCourses = user.getCourses();
+        if(userCourses == null) userCourses = new ArrayList<>();
 
         for (Course c : userCourses) {
             if (c.getId() == courseId) {
