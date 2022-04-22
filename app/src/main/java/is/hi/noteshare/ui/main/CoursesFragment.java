@@ -58,10 +58,12 @@ public class CoursesFragment extends Fragment implements CourseAdapter.onCourseL
         RecyclerView recyclerView = binding.courseList;
         EditText searchBar = binding.searchBar;
 
+
         mNetworkManager.getCourses(new NetworkCallback<List<Course>>() {
             @Override
             public void onSuccess(List<Course> courses) {
                 mCourses = courses;
+                mFilteredCourses = mCourses;
                 mCourseAdapter = new CourseAdapter(CoursesFragment.this.getActivity(), mCourses, CoursesFragment.this);
                 recyclerView.setAdapter(mCourseAdapter);
             }

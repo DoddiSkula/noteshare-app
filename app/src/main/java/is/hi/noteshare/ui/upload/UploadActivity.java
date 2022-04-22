@@ -41,17 +41,13 @@ public class UploadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
+        // Extract UI elements
+
         selectButton = findViewById(R.id.selectFileButton);
         uploadButton = findViewById(R.id.uploadButton);
         uploadFileText = findViewById(R.id.uploadFileText);
 
-        uploadButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                uploadDocument();
-            }
-        });
-
+        // Initialize Activity Result Launcher
         ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -73,8 +69,6 @@ public class UploadActivity extends AppCompatActivity {
                                 for (byte b : pdfInBytes) {
                                     Log.i("myactivity", String.format("0x%20x", b));
                                 }
-                                Log.e("Pdfinbytes", pdfInBytes.toString());
-                                Log.e("encodedPdf", encodedPDF);
 
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -84,6 +78,13 @@ public class UploadActivity extends AppCompatActivity {
                 }
         );
 
+        // Initialize listeners
+        uploadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                uploadDocument();
+            }
+        });
 
         selectButton.setOnClickListener(new View.OnClickListener() {
             @Override
